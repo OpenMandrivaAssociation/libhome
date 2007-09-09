@@ -1,10 +1,11 @@
 %define	major 1
-%define libname	%mklibname home %{major}
+%define libname %mklibname home %{major}
+%define develname %mklibname home -d
 
 Summary:	A library providing a getpwnam() emulation
 Name:		libhome
 Version:	0.10.1
-Release:	%mkrel 3
+Release:	%mkrel 4
 Group:		System/Libraries
 License:	GPL
 URL:		http://pll.sourceforge.net/
@@ -14,7 +15,7 @@ BuildRequires:	autoconf2.5
 BuildRequires:	libtool
 BuildRequires:	openldap-devel
 BuildRequires:	openssl-devel
-BuildRequires:	MySQL-devel
+BuildRequires:	mysql-devel
 BuildRequires:	postgresql-devel
 BuildRequires:	db4-devel
 BuildRequires:	groff-for-man
@@ -36,13 +37,14 @@ Open LDAP 2 or system /etc/passwd frontend. It's intended to replace getpwnam
 within a system daemons who needs user authentification or identification when
 the users are listed on foreign servers.
 
-%package -n	%{libname}-devel
+%package -n	%{develname}
 Summary:	Static library and header files for the libhome library
 Group:		Development/C
-Provides:	%{name}-devel = %{version}
 Requires:	%{libname} = %{version}
+Provides:	%{name}-devel = %{version}-%{release}
+Obsoletes:	%{mklibname home 1 -d}
 
-%description -n	%{libname}-devel
+%description -n	%{develname}
 libhome is a library providing a getpwnam() emulation. It support MySQL (3.23),
 Open LDAP 2 or system /etc/passwd frontend. It's intended to replace getpwnam
 within a system daemons who needs user authentification or identification when
@@ -102,7 +104,7 @@ install -m0640 home.conf %{buildroot}%{_sysconfdir}/home.conf
 %attr(0755,root,root) %{_sbindir}/home_proxy
 %attr(0644,root,root) %{_mandir}/man*/*
 
-%files -n %{libname}-devel
+%files -n %{develname}
 %defattr(-,root,root)
 %attr(0755,root,root) %{_bindir}/libhome.sh
 %dir %{_includedir}/home
@@ -110,5 +112,3 @@ install -m0640 home.conf %{buildroot}%{_sysconfdir}/home.conf
 %attr(0755,root,root) %{_libdir}/*.so
 %attr(0755,root,root) %{_libdir}/*.la
 %attr(0644,root,root) %{_libdir}/*.a
-
-
