@@ -19,7 +19,6 @@ BuildRequires:	mysql-devel
 BuildRequires:	postgresql-devel
 BuildRequires:	db4-devel
 BuildRequires:	groff-for-man
-BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 
 %description
 libhome is a library providing a getpwnam() emulation. It support MySQL (3.23),
