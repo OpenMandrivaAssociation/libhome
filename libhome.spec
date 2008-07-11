@@ -5,7 +5,7 @@
 Summary:	A library providing a getpwnam() emulation
 Name:		libhome
 Version:	0.10.1
-Release:	%mkrel 5
+Release:	%mkrel 6
 Group:		System/Libraries
 License:	GPL
 URL:		http://pll.sourceforge.net/
@@ -19,7 +19,7 @@ BuildRequires:	mysql-devel
 BuildRequires:	postgresql-devel
 BuildRequires:	db4-devel
 BuildRequires:	groff-for-man
-BuildRoot:	%{_tmppath}/%{name}-%{version}-root
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 libhome is a library providing a getpwnam() emulation. It support MySQL (3.23),
@@ -79,7 +79,7 @@ export CXXFLAGS="%{optflags} -DLDAP_DEPRECATED"
 %make
 
 %install
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
+rm -rf %{buildroot}
 
 install -d %{buildroot}%{_sysconfdir}
 
@@ -96,7 +96,7 @@ install -m0640 home.conf %{buildroot}%{_sysconfdir}/home.conf
 %endif
 
 %clean
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
+rm -rf %{buildroot}
 
 %files -n %{libname}
 %defattr(-,root,root)
