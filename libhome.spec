@@ -5,7 +5,7 @@
 Summary:	A library providing a getpwnam() emulation
 Name:		libhome
 Version:	0.10.1
-Release:	%mkrel 6
+Release:	%mkrel 7
 Group:		System/Libraries
 License:	GPL
 URL:		http://pll.sourceforge.net/
