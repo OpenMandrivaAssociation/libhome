@@ -4,12 +4,12 @@
 
 Summary:	A library providing a getpwnam() emulation
 Name:		libhome
-Version:	0.10.1
-Release:	%mkrel 8
+Version:	0.10.2
+Release:	%mkrel 1
 Group:		System/Libraries
 License:	GPL
 URL:		http://pll.sourceforge.net/
-Source0:	http://prdownloads.sourceforge.net/pll//%{name}-%{version}.tar.bz2
+Source0:	http://prdownloads.sourceforge.net/pll//%{name}-%{version}.tar.gz
 Patch0:		libhome-0.10.1-DESTDIR.diff
 BuildRequires:	autoconf2.5
 BuildRequires:	libtool
