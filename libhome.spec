@@ -5,13 +5,14 @@
 Summary:	A library providing a getpwnam() emulation
 Name:		libhome
 Version:	0.10.2
-Release:	%mkrel 2
+Release:	%mkrel 3
 Group:		System/Libraries
 License:	GPL
 URL:		http://pll.sourceforge.net/
 Source0:	http://prdownloads.sourceforge.net/pll//%{name}-%{version}.tar.gz
 Patch0:		libhome-0.10.1-DESTDIR.diff
-BuildRequires:	autoconf2.5
+Patch1:		libhome-0.10.2-fix-link.patch
+BuildRequires:	autoconf
 BuildRequires:	libtool
 BuildRequires:	openldap-devel
 BuildRequires:	openssl-devel
@@ -56,6 +57,7 @@ This package contains the static libhome library and its header files.
 
 %setup -q -n %{name}-%{version}
 %patch0 -p0
+%patch1 -p0
 
 find . -type d -perm 0700 -exec chmod 755 {} \;
 find . -type d -perm 0555 -exec chmod 755 {} \;
@@ -67,7 +69,7 @@ for i in `find . -type d -name CVS` `find . -type f -name .cvs\*` `find . -type 
 done
 
 # do not use bdb-4.3 just yet
-perl -pi -e "s|db-4.3|db-4.2|g" configure*
+perl -pi -e "s|db-4.3|db-4.8|g" configure*
 
 %build
 export CFLAGS="%{optflags} -DLDAP_DEPRECATED"
@@ -75,7 +77,6 @@ export CXXFLAGS="%{optflags} -DLDAP_DEPRECATED"
 
 %configure2_5x \
     --with-conffile=%{_sysconfdir}/home.conf
-
 %make
 
 %install
