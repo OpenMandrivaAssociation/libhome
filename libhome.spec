@@ -5,7 +5,7 @@
 Summary:	A library providing a getpwnam() emulation
 Name:		libhome
 Version:	0.10.2
-Release:	%mkrel 7
+Release:	%mkrel 8
 Group:		System/Libraries
 License:	GPL
 URL:		http://pll.sourceforge.net/
@@ -43,8 +43,8 @@ the users are listed on foreign servers.
 %package	utils
 Summary:        A library providing a getpwnam() emulation
 Group:          System/Libraries
-Conflicts:	lib64home1 < 0.10.2-7
-Conflicts:	libhome1 < 0.10.2-7
+Conflicts:	lib64home1 < 0.10.2-8
+Conflicts:	libhome1 < 0.10.2-8
 
 %description	utils
 libhome is a library providing a getpwnam() emulation. It support MySQL (3.23),
