@@ -89,6 +89,7 @@ done
 autoreconf
 export CFLAGS="%{optflags} -DLDAP_DEPRECATED"
 export CXXFLAGS="%{optflags} -DLDAP_DEPRECATED"
+export LDFLAGS=-lcrypt
 
 %configure2_5x \
     --with-conffile=%{_sysconfdir}/home.conf
@@ -133,5 +134,4 @@ rm -rf %{buildroot}
 %dir %{_includedir}/home
 %attr(0644,root,root) %{_includedir}/home/*.h
 %attr(0755,root,root) %{_libdir}/*.so
-%attr(0755,root,root) %{_libdir}/*.la
 %attr(0644,root,root) %{_libdir}/*.a
