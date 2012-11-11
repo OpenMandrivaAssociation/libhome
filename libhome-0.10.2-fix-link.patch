@@ -1,0 +1,11 @@
+--- Makefile.in.link	2010-04-21 02:56:46.000000000 +0200
++++ Makefile.in	2010-04-21 02:56:57.000000000 +0200
+@@ -63,7 +63,7 @@
+ LIBTOOL=./libtool
+ 
+ COMPILE=${LIBTOOL} --mode=compile ${CC} ${CPPFLAGS} ${CFLAGS}
+-LINK=${LIBTOOL} --mode=link ${CC} ${CFLAGS}
++LINK=${LIBTOOL} --mode=link ${CC} ${CFLAGS} $(LDFLAGS)
+ 
+ 
+ hparam.o: version.h

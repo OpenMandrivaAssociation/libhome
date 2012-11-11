@@ -1,0 +1,20 @@
+--- configure.in.db5	2011-04-12 12:30:12.000000000 +0200
++++ configure.in	2011-04-12 12:31:45.000000000 +0200
+@@ -289,6 +289,8 @@
+         [${prefix}/BerkeleyDB.4.2/include]
+         [${prefix}/BerkeleyDB.4.1/include]
+         [${prefix}/BerkeleyDB.4.0/include]
++	${includedir}/db53
++	${includedir}/db50
+ 	${includedir}/db43
+ 	${includedir}/db42
+ 	${includedir}/db41
+@@ -510,7 +512,7 @@
+   fi
+   case $db_version in
+   3) AC_SEARCH_LIBS(db_strerror, db-3.3 db-3.2 db-3.1 db-3.0 db-3 db3);;
+-  4) AC_SEARCH_LIBS(db_strerror, db-4.3 db-4.2 db-4.1 db-4.0 db-4 db4,,
++  4) AC_SEARCH_LIBS(db_strerror, db-4.3 db-4.2 db-4.1 db-4.0 db-4 db4 db,,
+       AC_SEARCH_LIBS(db_strerror_4002, db-4.2));;
+   esac
+ fi

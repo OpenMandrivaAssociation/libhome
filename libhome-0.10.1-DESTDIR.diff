@@ -1,0 +1,60 @@
+--- Makefile.in	2005-07-01 16:39:08.000000000 +0200
++++ Makefile.in.oden	2006-07-20 17:48:25.000000000 +0200
+@@ -49,6 +49,8 @@
+ HOME_PROXY=@DO_PROXY@ home_proxy
+ NSS_LIB=@DO_NSS@@NSS_PREFIX@nss_home_proxy.la
+ 
++DESTDIR=
++
+ all: Makefile libhome.la compat home.conf.0 home_finger @PRELOAD_LIB@ \
+ ${HOME_PROXY} ${NSS_LIB} home_su 
+ 
+@@ -114,27 +116,33 @@
+ install:: install-man install-lib
+ 
+ install-man:: home.conf.5
+-	${INSTALL_DATA} home.conf.5 ${mandir}/man5/
+-@DO_PROXY@	${INSTALL_DATA} home_proxy.8 ${mandir}/man8/
++	-mkdir -p ${DESTDIR}${mandir}/man5/
++	-mkdir -p ${DESTDIR}${mandir}/man8/
++	${INSTALL_DATA} home.conf.5 ${DESTDIR}${mandir}/man5/
++@DO_PROXY@	${INSTALL_DATA} home_proxy.8 ${DESTDIR}${mandir}/man8/
+ 
+ install-lib:: all
+-	${LIBTOOL} --mode=install ${INSTALL_DATA} libhome.la ${libdir}/
++	-mkdir -p ${DESTDIR}${libdir}
++	${LIBTOOL} --mode=install ${INSTALL_DATA} libhome.la ${DESTDIR}${libdir}/
+ 	test "@PRELOAD_LIB@" = "" || \
+-	${LIBTOOL} --mode=install ${INSTALL_DATA} @PRELOAD_LIB@ ${libdir}/
+-	${LIBTOOL} --mode=install ${INSTALL_PROGRAM} home_finger ${bindir}/
+-	${LIBTOOL} --mode=install ${INSTALL_PROGRAM} home_su ${bindir}/
+-	-mkdir -p ${includedir}/home	
+-	${INSTALL_DATA} hpwd.h ${includedir}/home/pwd.h
+-	${INSTALL_DATA} hpwd.h ${includedir}/home/
+-	${INSTALL_DATA} hparam.h ${includedir}/home/
+-	${INSTALL_DATA} home_version.h ${includedir}/home/
++	${LIBTOOL} --mode=install ${INSTALL_DATA} @PRELOAD_LIB@ ${DESTDIR}${libdir}/
++	-mkdir -p ${DESTDIR}${bindir}
++	${LIBTOOL} --mode=install ${INSTALL_PROGRAM} home_finger ${DESTDIR}${bindir}/
++	${LIBTOOL} --mode=install ${INSTALL_PROGRAM} home_su ${DESTDIR}${bindir}/
++	-mkdir -p ${DESTDIR}${includedir}/home
++	${INSTALL_DATA} hpwd.h ${DESTDIR}${includedir}/home/pwd.h
++	${INSTALL_DATA} hpwd.h ${DESTDIR}${includedir}/home/
++	${INSTALL_DATA} hparam.h ${DESTDIR}${includedir}/home/
++	${INSTALL_DATA} home_version.h ${DESTDIR}${includedir}/home/
+ 	chmod +x libhome.sh
+-	${INSTALL_SCRIPT} libhome.sh ${bindir}/
+-@DO_PROXY@	${LIBTOOL} --mode=install ${INSTALL_PROGRAM} home_proxy ${sbindir}/
+-@DO_NSS@	${LIBTOOL} --mode=install ${INSTALL_DATA} ${NSS_LIB} ${libdir}/
++	${INSTALL_SCRIPT} libhome.sh ${DESTDIR}${bindir}/
++	-mkdir -p ${DESTDIR}${sbindir}
++@DO_PROXY@	${LIBTOOL} --mode=install ${INSTALL_PROGRAM} home_proxy ${DESTDIR}${sbindir}/
++@DO_NSS@	${LIBTOOL} --mode=install ${INSTALL_DATA} ${NSS_LIB} ${DESTDIR}${libdir}/
+ 
+ install-nss:: nss
+-@DO_NSS@	${LIBTOOL} --mode=install ${INSTALL_DATA} ${NSS_LIB} ${libdir}/
++	-mkdir -p ${DESTDIR}${libdir}
++@DO_NSS@	${LIBTOOL} --mode=install ${INSTALL_DATA} ${NSS_LIB} ${DESTDIR}${libdir}/
+ 
+ compat:
+ 	-mkdir compat
