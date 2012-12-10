@@ -135,3 +135,68 @@ rm -rf %{buildroot}
 %attr(0644,root,root) %{_includedir}/home/*.h
 %attr(0755,root,root) %{_libdir}/*.so
 %attr(0644,root,root) %{_libdir}/*.a
+
+
+%changelog
+* Tue May 08 2012 Crispin Boylan <crisb@mandriva.org> 0.10.2-9
++ Revision: 797559
+- Rebuild
+
+  + Bogdano Arendartchuk <bogdano@mandriva.com>
+    - build with db5
+    - split out binaries and man pages
+    - (from fwang | 2011-04-12 12:06:31 +0200)
+
+* Sat Jan 01 2011 Oden Eriksson <oeriksson@mandriva.com> 0.10.2-7mdv2011.0
++ Revision: 627253
+- rebuilt against mysql-5.5.8 libs, again
+
+* Thu Dec 30 2010 Oden Eriksson <oeriksson@mandriva.com> 0.10.2-6mdv2011.0
++ Revision: 626532
+- rebuilt against mysql-5.5.8 libs
+
+* Sun Dec 05 2010 Oden Eriksson <oeriksson@mandriva.com> 0.10.2-4mdv2011.0
++ Revision: 609752
+- rebuild
+
+* Wed Apr 21 2010 Funda Wang <fwang@mandriva.org> 0.10.2-3mdv2010.1
++ Revision: 537297
+- fix link with newer ldflags and db4.8
+
+* Thu Feb 18 2010 Oden Eriksson <oeriksson@mandriva.com> 0.10.2-2mdv2010.1
++ Revision: 507486
+- rebuild
+
+* Sun Dec 27 2009 Oden Eriksson <oeriksson@mandriva.com> 0.10.2-1mdv2010.1
++ Revision: 482801
+- 0.10.2
+
+* Sun Sep 13 2009 Thierry Vignaud <tv@mandriva.org> 0.10.1-8mdv2010.0
++ Revision: 438620
+- rebuild
+
+* Sat Dec 06 2008 Oden Eriksson <oeriksson@mandriva.com> 0.10.1-7mdv2009.1
++ Revision: 311242
+- rebuilt against mysql-5.1.30 libs
+
+* Fri Jul 11 2008 Oden Eriksson <oeriksson@mandriva.com> 0.10.1-6mdv2009.0
++ Revision: 233727
+- rebuild
+
+  + Pixel <pixel@mandriva.com>
+    - do not call ldconfig in %%post/%%postun, it is now handled by filetriggers
+
+  + Olivier Blin <blino@mandriva.org>
+    - restore BuildRoot
+
+* Wed Dec 26 2007 Oden Eriksson <oeriksson@mandriva.com> 0.10.1-5mdv2008.1
++ Revision: 137971
+- rebuilt against openldap-2.4.7 libs
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - kill re-definition of %%buildroot on Pixel's request
+
+* Sun Sep 09 2007 Oden Eriksson <oeriksson@mandriva.com> 0.10.1-4mdv2008.0
++ Revision: 83692
+- new devel naming
+
