@@ -5,7 +5,7 @@
          [${prefix}/BerkeleyDB.4.1/include]
          [${prefix}/BerkeleyDB.4.0/include]
 +	${includedir}/db53
-+	${includedir}/db50
++	${includedir}/db52
  	${includedir}/db43
  	${includedir}/db42
  	${includedir}/db41
