@@ -10,7 +10,7 @@ Version:	0.10.2
 Release:	11
 License:	GPLv2+
 Group:		System/Libraries
-Url:		http://pll.sourceforge.net/
+Url:		https://pll.sourceforge.net/
 Source0:	http://prdownloads.sourceforge.net/pll//%{name}-%{version}.tar.gz
 Patch0:		libhome-0.10.1-DESTDIR.diff
 Patch1:		libhome-0.10.2-fix-link.patch
